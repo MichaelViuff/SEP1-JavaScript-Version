@@ -36,7 +36,7 @@ public class Project
     }
 
     public void setId(int id) {
-        if(id == 0)
+        if(this.id == 0)
             this.id = id;
     }
 

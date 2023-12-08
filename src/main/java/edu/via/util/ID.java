@@ -6,7 +6,7 @@ public class ID {
 
     public static int getID()
     {
-        return ID++;
+        return ++ID;
     }
 
 }

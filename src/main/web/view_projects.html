@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <div>
+        <h1>My Projects</h1>
+        <a href="index.html">Back to front page</a>
+
+    </div>
+    <div id="projects-table">
+
+    </div>
+</div>
+
+
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8080/projects", false); // false for synchronous request
+    xhr.send();
+    const projectsAsJSON = xhr.responseText;
+
+    const projects = JSON.parse(projectsAsJSON);
+    console.log(projects);
+
+
+    let resultTableHTML = '<table>';
+    {
+        resultTableHTML += '<tr><th>name</th><th>budget</th><th>details</th></tr>';
+        for (let i = 0; i < projects.length; i++) {
+            const project = projects[i];
+            resultTableHTML += '<tr>';
+            resultTableHTML += '<td>' + project.name + '</td>';
+            resultTableHTML += '<td>' + project.budget + '</td>';
+            resultTableHTML += '<td><a href="view_project_details.html?id='+project.id+'">VIEW DETAILS</a></td>';
+            resultTableHTML += '</tr>';
+        }
+    }
+    resultTableHTML += '</table>';
+
+    document.getElementById("projects-table").innerHTML = resultTableHTML;
+
+</script>
+
+</body>
+</html>

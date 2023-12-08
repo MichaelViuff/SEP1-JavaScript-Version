@@ -12,7 +12,18 @@ public class ModelManager {
     {
         project.setId(ID.getID());
         projects.add(project);
-        System.out.println(projects);
     }
 
+    public ArrayList<Project> getAllProjects() {
+        return projects;
+    }
+
+    public Project getProjectWithId(int id) {
+        for (Project project : projects)
+        {
+            if(project.getId() == id)
+                return project;
+        }
+        throw new IllegalArgumentException("No such element");
+    }
 }

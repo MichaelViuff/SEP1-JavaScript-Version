@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Project Details</title>
+</head>
+<body>
+
+<h1>Viewing details</h1>
+
+<h3>Project ID:</h3>
+<p id="project-id"></p>
+
+<h3>Project Name:</h3>
+<p id="project-name"></p>
+
+<h3>Project Budget:</h3>
+<p id="project-budget"></p>
+
+<script>
+    const parameters = new URLSearchParams(window.location.search);
+    const id = parameters.get("id");
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8080/projects/"+id, false); // false for synchronous request
+    xhr.send();
+
+    const projectsAsJSON = xhr.responseText;
+
+    const project = JSON.parse(projectsAsJSON);
+    document.getElementById("project-id").innerHTML = project.id;
+    document.getElementById("project-name").innerHTML = project.name;
+    document.getElementById("project-budget").innerHTML = project.budget;
+
+</script>
+
+</body>
+</html>
