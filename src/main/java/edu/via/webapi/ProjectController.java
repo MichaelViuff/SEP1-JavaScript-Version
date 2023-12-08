@@ -17,7 +17,6 @@ public class ProjectController implements HttpHandler
 
     public ProjectController(ModelManager modelManager)
     {
-
         this.modelManager = modelManager;
     }
 
@@ -58,7 +57,8 @@ public class ProjectController implements HttpHandler
         {
             exchange.sendResponseHeaders(200, projectAsJSON.length());
             outputStream.write(projectAsJSON.getBytes());
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -73,7 +73,8 @@ public class ProjectController implements HttpHandler
         {
             exchange.sendResponseHeaders(200, projectsAsJSON.length());
             outputStream.write(projectsAsJSON.getBytes());
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -91,10 +92,10 @@ public class ProjectController implements HttpHandler
             String response = "Created!";
             exchange.sendResponseHeaders(201, response.length());
             outputStream.write(response.getBytes());
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
         }
     }
-
 }

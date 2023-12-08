@@ -25,7 +25,9 @@ public class ModelManager
         for (Project project : projects)
         {
             if (project.getId() == id)
+            {
                 return project;
+            }
         }
         throw new IllegalArgumentException("No such element");
     }
