@@ -4,9 +4,10 @@ import edu.via.util.ID;
 
 import java.util.ArrayList;
 
-public class ModelManager {
+public class ModelManager
+{
 
-    private ArrayList<Project> projects = new ArrayList<>();
+    private final ArrayList<Project> projects = new ArrayList<>();
 
     public void addProject(Project project)
     {
@@ -14,14 +15,16 @@ public class ModelManager {
         projects.add(project);
     }
 
-    public ArrayList<Project> getAllProjects() {
+    public ArrayList<Project> getAllProjects()
+    {
         return projects;
     }
 
-    public Project getProjectWithId(int id) {
+    public Project getProjectWithId(int id)
+    {
         for (Project project : projects)
         {
-            if(project.getId() == id)
+            if (project.getId() == id)
                 return project;
         }
         throw new IllegalArgumentException("No such element");

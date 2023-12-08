@@ -1,6 +1,7 @@
 package edu.via.util;
 
-public class ID {
+public class ID
+{
 
     private static int ID;
 

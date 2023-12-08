@@ -10,11 +10,13 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class ProjectController implements HttpHandler {
+public class ProjectController implements HttpHandler
+{
 
     private final ModelManager modelManager;
 
-    public ProjectController(ModelManager modelManager) {
+    public ProjectController(ModelManager modelManager)
+    {
 
         this.modelManager = modelManager;
     }
@@ -24,15 +26,15 @@ public class ProjectController implements HttpHandler {
     {
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*"); //Er ikke nødvendigt når vi kun bruger simple requests (https://stackoverflow.com/questions/29954037/why-is-an-options-request-sent-and-can-i-disable-it)
         String requestMethod = exchange.getRequestMethod();
-        switch (requestMethod) {
+        switch (requestMethod)
+        {
             case "GET" ->
             {
                 //Check to see if the request is to view a single Project or to see all projects
                 if ("/projects".equals(exchange.getRequestURI().toString())) //All projects
                 {
                     handleGETAllProjects(exchange);
-                }
-                else
+                } else
                 {
                     System.out.println(exchange.getRequestURI().toString());
                     String id = exchange.getRequestURI().toString().replace("/projects/", ""); //A single project with specific ID
@@ -56,7 +58,8 @@ public class ProjectController implements HttpHandler {
         {
             exchange.sendResponseHeaders(200, projectAsJSON.length());
             outputStream.write(projectAsJSON.getBytes());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -70,7 +73,8 @@ public class ProjectController implements HttpHandler {
         {
             exchange.sendResponseHeaders(200, projectsAsJSON.length());
             outputStream.write(projectsAsJSON.getBytes());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -87,7 +91,8 @@ public class ProjectController implements HttpHandler {
             String response = "Created!";
             exchange.sendResponseHeaders(201, response.length());
             outputStream.write(response.getBytes());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }

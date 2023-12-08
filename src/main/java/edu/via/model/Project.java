@@ -3,45 +3,53 @@ package edu.via.model;
 public class Project
 {
 
-    private Employee employee;
+    private final Employee employee;
 
     private String name;
     private double budget;
     private int id;
 
-    public Project(String name, double budget) {
+    public Project(String name, double budget)
+    {
         this.name = name;
         this.budget = budget;
         employee = null;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public double getBudget() {
+    public double getBudget()
+    {
         return budget;
     }
 
-    public void setBudget(double budget) {
+    public void setBudget(double budget)
+    {
         this.budget = budget;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
-        if(this.id == 0)
+    public void setId(int id)
+    {
+        if (this.id == 0)
             this.id = id;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Project{" +
                 "employee=" + employee +
                 ", name='" + name + '\'' +

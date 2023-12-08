@@ -18,7 +18,8 @@
             <label for="budget">Budget:</label>
             <input type="number" id="budget" name="budget"/>
             <br>
-            <!--                <input type="submit" value="Submit">--> <!-- undersøg hvordan det kan gøres med submit -->
+            <!--                <input type="submit" value="Submit">-->
+            <!-- undersøg hvordan det kan gøres med submit -->
             <button onclick="submitForm()">Submit</button>
         </div>
         <p id="result"></p>
@@ -47,7 +48,7 @@
         xhr.send(projectAsJSON);
 
         const response = xhr.responseText;
-        result.innerHTML = "<b>Submitted: "+response+" </b>";
+        result.innerHTML = "<b>Submitted: " + response + " </b>";
     }
 
 </script>
