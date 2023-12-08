@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new Project</title>
+</head>
+<body>
+
+
+<div>
+    <h1>Here you can create a new project</h1>
+    <a href="index.html">Back to front page</a>
+    <div>
+        <div>
+            <label for="name">Project name:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="budget">Budget:</label>
+            <input type="number" id="budget" name="budget"/>
+            <br>
+            <!--                <input type="submit" value="Submit">-->
+            <button onclick="submitForm()">Submit</button>
+        </div>
+        <p id="result"></p>
+
+    </div>
+</div>
+
+<script>
+    var result = document.getElementById("result");
+
+    function submitForm() {
+        const name = document.getElementById("name").value;
+        const budget = document.getElementById("budget").value;
+
+        const xhr = new XMLHttpRequest();
+
+        const project = {
+            name: name,
+            budget: budget
+        }
+
+        const projectAsJSON = JSON.stringify(project);
+
+        xhr.open("POST", "http://localhost:8080/projects", false); // false for synchronous request
+        xhr.setRequestHeader("Content-Type", "text/plain; charset=UTF-8");
+        xhr.send(projectAsJSON);
+
+        const response = xhr.responseText;
+        result.innerHTML = "<b>Submitted: "+response+" </b>";
+    }
+
+</script>
+
+</body>
+</html>
